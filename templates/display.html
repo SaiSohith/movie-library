@@ -1,0 +1,52 @@
+{% extends "header.html" %} {% load static %} {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .align {
+          margin: 20px;
+          display: grid;
+          grid-template-columns: auto auto auto auto;
+          gap: 20px;
+        }
+      </style>
+       <link
+       rel="stylesheet"
+       href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+       integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+       crossorigin="anonymous"
+     /> 
+    <div class="align">
+        {% for ab in resp %}
+        <div class="card" style="width: 18rem">
+          <a href="/movies">
+            <img
+              src="{{ab.Poster}}"
+              class="card-img-top"
+              alt="https://post.healthline.com/wp-content/uploads/2020/07/pizza-beer-1200x628-facebook-1200x628.jpg"
+            />
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">{{ab.Title}}</h5>
+            <p>Year : {{ab.Year}}</p>
+            <!-- <img src="{{ab.Poster}}" alt=""> -->
+            <a href="#" class="btn btn-dark">Details</a>
+            <!-- <a href="" class="btn btn-dark">Add to List</a> -->
+            
+            <form action="movielist/{{ab.imdbID}}" method="post">
+              {% csrf_token %}
+              <button>Add to List</button>
+            </form>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+</body>
+</html>
+{% endblock %}

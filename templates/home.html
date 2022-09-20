@@ -8,8 +8,8 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Movie Library</h1>
-    <li><a href="auth/register">Register</a></li>
+    <!-- <h1>Movie Library</h1>
+    <li><a href="register">Register</a></li> -->
     <style>
         .align {
           margin: 20px;
@@ -58,7 +58,7 @@
           </div>
         </div>
       </form>
-    <h3 style="color: white">Movies</h3>
+    <!-- <h3 style="color: white">Movies</h3>  -->
     <div class="align">
       {% for ab in res %}
       <div class="card" style="width: 18rem">
@@ -73,7 +73,17 @@
           <h5 class="card-title">{{ab.Title}}</h5>
           <p>Year : {{ab.Year}}</p>
           <!-- <img src="{{ab.Poster}}" alt=""> -->
-          <a href="#" class="btn btn-dark">Details</a>
+          <!-- <a href="#" class="btn btn-dark">Details</a> -->
+          <!-- <a href="" class="btn btn-dark">Add to List</a> -->
+          <form action="details/{{ab.imdbID}}" method="post">
+            {% csrf_token %}
+            <button>Details</button>
+          </form>
+
+          <form action="movielist/{{ab.imdbID}}" method="post">
+            {% csrf_token %}
+            <button>Add to List</button>
+          </form>
         </div>
       </div>
       {% endfor %}

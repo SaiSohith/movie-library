@@ -85,16 +85,6 @@
           <li class="nav-item">
             <a class="nav-link active"  href="/">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active"  href="contactus">Contactus</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active"  href="aboutus">Aboutus</a>
-          </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link active"  href="">Your Lists</a>
-          </li> -->
-          
           {% if user.is_authenticated %}
       
           <li>
@@ -104,19 +94,20 @@
                 <i class="fas fa-user-circle"></i>
                 Hello,{{user.username}}</button>
               <div class="dropdown-content">
-                <a href="auth/logout">Logout</a>
+                <a href="logout">Logout</a>
                 
               </div>
             </div>
-
-          </li>
-
-          {% else %}
-          <li class="nav-item"> 
-            <a class="nav-link active" href="auth/login">Login</a>
           </li>
           <li class="nav-item col-sm-4">
-            <a class="nav-link active" href="auth/register">Register</a>
+            <a class="nav-link active" href="movielist/{{user.username}}">Movie List</a>
+          </li>
+          {% else %}
+          <li class="nav-item"> 
+            <a class="nav-link active" href="login">Login</a>
+          </li>
+          <li class="nav-item col-sm-4">
+            <a class="nav-link active" href="register">Register</a>
           </li>
           {% endif %}
       </div>
