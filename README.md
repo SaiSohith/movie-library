@@ -1,6 +1,4 @@
 # movie-library
-Deployment
-
 
 #Clone the Repo
 
