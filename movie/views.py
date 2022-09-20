@@ -73,8 +73,29 @@ def logoutuser(request):
     auth.logout(request)
     return redirect('/')
 
-def movielist(request,username):
-    # print(username)
-    movielist=UserList.objects.filter(username=username)
-    print(movielist)
+def movielist(request,usernameOrImdb):
+    if request.method=='POST':
+        print(request.user.username)
+        var=UserList(username=request.user.username,movieinfo=usernameOrImdb)
+
+        var.save()
+        print(var)
+        return redirect(f'/movielist/{request.user.username}')
+    else:
+        mlist=UserList.objects.filter(username=usernameOrImdb).values('movieinfo')
+        # print(mlist[0])
+        resp=[]
+        for i in mlist:
+            print(i)
+            resp.append(requests.get(f'https://www.omdbapi.com/?i={i["movieinfo"]}&apikey=ab0b8847').json())
+        # return redirect(f'/{request.user.username}')
+        # return HttpResponse("Hello In get movie list")
+        # return render(request,'home.html',{'list':res['Search']})
+        # print(resp)
+        return render(request,'display.html',{'resp':resp})
     return HttpResponse('movie list')
+
+
+def details(request,movieid):
+    res=requests.get(f'https://www.omdbapi.com/?i={movieid}&apikey=ab0b8847').json()
+    return render(request,'details.html',{'res':res})

@@ -26,5 +26,6 @@ urlpatterns = [
     path('register', views.register, name='register'),
     path('login', views.loginuser, name='loginuser'),
     path('logout', views.logoutuser, name='logout'),
-    path('movielist/<str:username>',views.movielist,name='movielist')
+    path('movielist/<str:usernameOrImdb>',views.movielist,name='movielist'),
+    path('details/<str:movieid>',views.details,name='details')
 ]
