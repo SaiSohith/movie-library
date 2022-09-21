@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-y65m*g(k*jnf__=+4^%9^7d2gov4n9%v3mm18s#(u&ye-zwn8_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['movie-library-nice.herokuapp.com']
+ALLOWED_HOSTS = ['http://movie-library-nice.herokuapp.com/','https://movie-library-nice.herokuapp.com/']
 
 
 # Application definition
