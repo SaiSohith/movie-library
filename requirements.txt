@@ -9,5 +9,5 @@ requests==2.28.1
 sqlparse==0.4.2
 tzdata==2022.2
 urllib3==1.26.12
-python==3.8.0
+# python==3.8.0
 # backports.zoneinfo;python_version<"3.9"
